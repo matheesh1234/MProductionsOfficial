@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kaweeja Matheesh - Professional video editor with 3 years of experience in Premiere Pro and After Effects. Creating compelling visual stories.">
+    <meta name="keywords" content="video editing, Kaweeja Matheesh, Premiere Pro, After Effects, motion graphics, post-production">
+    <meta name="author" content="Kaweeja Matheesh">
+    <link rel="icon" type="image/png" href="Icon.png" />
+    <title>Kaweeja Matheesh - Professional Video Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0);
+            backdrop-filter: blur(0px);
+            transition: all 0.4s ease;
+            will-change: transform;
+        }
+
+        nav.scrolled {
+            padding: 15px 80px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            transition: transform 0.3s;
+            z-index: 1001;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 45px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-center a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-center a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-center a:hover::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-btn {
+            padding: 10px 24px;
+            background: #fff;
+            color: #000;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            position: relative;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.06) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-label {
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #888;
+            animation: fadeInDown 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(36px, 8vw, 82px);
+            font-weight: 800;
+            letter-spacing: -3px;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero p {
+            font-size: clamp(16px, 3vw, 22px);
+            color: #aaa;
+            margin-bottom: 50px;
+            font-weight: 400;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.8s both;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+        }
+
+        .btn-white {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+            transform: translateY(-3px);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            animation: fadeIn 1s ease-out 1s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .scroll-indicator::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            width: 4px;
+            height: 8px;
+            background: #fff;
+            border-radius: 2px;
+            transform: translateX(-50%);
+            animation: scroll 2s ease-in-out infinite;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(-50%) translateY(0); opacity: 0; }
+            40% { opacity: 1; }
+            80% { transform: translateX(-50%) translateY(20px); opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+.about-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh; /* makes it centered vertically in full view height */
+  padding: 60px 20px;
+  background: #0a0a0a; /* optional background */
+  color: #fff; /* text color */
+}
+
+.about-container {
+  max-width: 900px;
+  width: 100%;
+}
+
+.about-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.about-highlights {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.highlight-item {
+  text-align: center;
+}
+
+.highlight-item i {
+  font-size: 2rem;
+  color: #ffcc00;
+  margin-bottom: 10px;
+}
+
+
+.about-container {
+  max-width: 900px;
+  width: 100%;
+}
+
+        .about-text h2 {
+            font-size: clamp(36px, 7vw, 64px);
+            font-weight: 800;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #667eea 0%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-text p {
+            font-size: clamp(16px, 2.5vw, 20px);
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .highlight-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .highlight-item:hover {
+            border-color: rgba(102, 126, 234, 0.3);
+            background: rgba(102, 126, 234, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .highlight-item i {
+            font-size: 32px;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .highlight-item h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .highlight-item p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .skills-section {
+            background: #000;
+            padding: 100px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: clamp(36px, 7vw, 64px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: clamp(16px, 3vw, 20px);
+            color: #888;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .skill-item {
+            text-align: left;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 20px;
+        }
+
+        .skill-item:hover {
+            border-color: rgba(102, 126, 234, 0.3);
+            background: rgba(102, 126, 234, 0.05);
+            transform: translateY(-10px);
+        }
+
+        .skill-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s;
+            color: #667eea;
+            flex-shrink: 0;
+        }
+
+        .skill-item:hover .skill-icon {
+            border-color: #667eea;
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .skill-item h4 {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .skill-item p {
+            font-size: 15px;
+            color: #888;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .skill-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-features li {
+            font-size: 14px;
+            color: #aaa;
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .skill-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .portfolio {
+            background: #0a0a0a;
+            padding: 100px 20px;
+        }
+
+        .portfolio-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .portfolio-image-section {
+            position: relative;
+        }
+
+        .portfolio-image-container {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            object-position: top center;
+            border-radius: 24px;
+            border: 4px solid rgba(102, 126, 234, 0.3);
+            transition: all 0.4s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .portfolio-image:hover {
+            border-color: rgba(102, 126, 234, 0.6);
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.3);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 35px;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .portfolio-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .portfolio-item:hover {
+            border-color: rgba(102, 126, 234, 0.3);
+            background: rgba(102, 126, 234, 0.05);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        .portfolio-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 25px;
+            transition: all 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .portfolio-item h3 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .portfolio-item .project-type {
+            font-size: 13px;
+            color: #667eea;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .portfolio-item p {
+            font-size: 15px;
+            color: #888;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .portfolio-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 12px 24px;
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 30px;
+        }
+
+        .portfolio-link:hover {
+            gap: 14px;
+            background: rgba(102, 126, 234, 0.1);
+            border-color: #667eea;
+        }
+
+        .stats {
+            background: #000;
+            padding: 100px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 50px;
+            text-align: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-item h4 {
+            font-size: clamp(48px, 10vw, 72px);
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -3px;
+            transition: transform 0.3s;
+            background: linear-gradient(135deg, #667eea 0%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-item:hover h4 {
+            transform: scale(1.1);
+        }
+
+        .stat-item p {
+            font-size: 16px;
+            color: #888;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .contact-section {
+            background: #0a0a0a;
+            padding: 100px 20px;
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: clamp(36px, 7vw, 64px);
+            font-weight: 800;
+            margin-bottom: 25px;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #667eea 0%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-info p {
+            font-size: clamp(16px, 2.5vw, 20px);
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-detail-item {
+            border-left: 3px solid rgba(102, 126, 234, 0.5);
+            padding-left: 25px;
+            transition: all 0.3s;
+        }
+
+        .contact-detail-item:hover {
+            border-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .contact-detail-item h4 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .contact-detail-item p {
+            font-size: 18px;
+            color: #fff;
+            margin: 0;
+            word-break: break-word;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 45px 35px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 15px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: rgba(102, 126, 234, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .form-status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .form-status.success {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            display: block;
+        }
+
+        .form-status.error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            display: block;
+        }
+
+        footer {
+            background: #000;
+            padding: 80px 20px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-content h3 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #f093fb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-content p {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            border-color: #667eea;
+            color: #667eea;
+            transform: translateY(-5px);
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                padding: 20px 40px;
+            }
+
+            nav.scrolled {
+                padding: 15px 40px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 80px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 80px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            nav {
+                padding: 20px 80px;
+            }
+
+            nav.scrolled {
+                padding: 15px 80px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .portfolio-container {
+                grid-template-columns: 380px 1fr;
+                gap: 80px;
+            }
+
+            .portfolio-image-container {
+                position: sticky;
+                top: 120px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .nav-center { 
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 30px;
+                gap: 25px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-center.active {
+                display: flex;
+            }
+
+            .nav-right { 
+                display: none; 
+            }
+
+            .menu-toggle { 
+                display: flex; 
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        ::selection {
+            background: #667eea;
+            color: #fff;
+        }
+
+        img {
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="logo">Kaweeja Matheesh</div>
+        <ul class="nav-center" id="navMenu">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-right">
+            <a href="#contact" class="nav-btn">Hire Me</a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-label">Professional Video Editor</div>
+            <h1>Kaweeja Matheesh</h1>
+            <p>Crafting compelling visual stories with 3 years of expertise in Premiere Pro and After Effects. Transforming raw footage into captivating cinematic experiences that engage and inspire.</p>
+            <div class="hero-btns">
+                <a href="#portfolio" class="btn btn-white" aria-label="View portfolio">View My Work</a>
+<a href="Resume.png" class="btn btn-outline" aria-label="View Resume" target="_blank">View Resume</a>
+            </div>
+        </div>
+        <div class="scroll-indicator" aria-hidden="true"></div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Turning Vision Into Reality</h2>
+                <p>With 3 years of hands-on experience in video editing, I specialize in creating engaging content that tells stories and captivates audiences. My expertise lies in blending technical precision with creative storytelling.</p>
+                <p>From YouTube creators to commercial brands, I've helped clients transform their raw footage into polished, professional videos that stand out in today's competitive digital landscape.</p>
+                <div class="about-highlights">
+
+                    <div class="highlight-item">
+                        <i class="fas fa-clock"></i>
+                        <h4>Fast</h4>
+                        <p>Turnaround</p>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-heart"></i>
+                        <h4>Client</h4>
+                        <p>Satisfaction</p>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-star"></i>
+                        <h4>Creative</h4>
+                        <p>Excellence</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <header class="section-header">
+            <div class="section-label">Expertise</div>
+            <h2 class="section-title">What I Do Best</h2>
+            <p class="section-subtitle">A comprehensive toolkit of professional video editing skills honed over 3 years of dedicated practice and real-world projects.</p>
+        </header>
+        <div class="skills-grid">
+            <article class="skill-item">
+                <div class="skill-header">
+                    <div class="skill-icon" aria-hidden="true">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h4>Adobe Premiere Pro</h4>
+                </div>
+                <p>Master-level video editing with advanced multi-cam workflows, complex timeline management, and professional-grade cuts.</p>
+                <ul class="skill-features">
+                    <li>3+ years Experience</li>
+                </ul>
+            </article>
+            <article class="skill-item">
+                <div class="skill-header">
+                    <div class="skill-icon" aria-hidden="true">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h4>Adobe After Effects</h4>
+                </div>
+                <p>Cutting-edge motion graphics, visual effects, and animations that elevate your video content to cinematic levels.</p>
+                <ul class="skill-features">
+                    <li>3+ years Experience</li>
+                </ul>
+            </article>
+            <article class="skill-item">
+                <div class="skill-header">
+                    <div class="skill-icon" aria-hidden="true">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h4>Color Grading</h4>
+                </div>
+                <p>Professional color correction and cinematic grading that brings mood, atmosphere, and visual consistency to every frame.</p>
+                <ul class="skill-features">
+                    <li>LUT creation & application</li>
+                    <li>Cinematic color grading</li>
+                    <li>Skin tone correction</li>
+                    <li>Mood-based color palettes</li>
+                </ul>
+            </article>
+            <article class="skill-item">
+                <div class="skill-header">
+                    <div class="skill-icon" aria-hidden="true">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                    <h4>Audio Design</h4>
+                </div>
+                <p>Crystal-clear audio mixing, sound design, and music integration that complements and enhances your visual story.</p>
+                <ul class="skill-features">
+                    <li>Dialogue cleaning & enhancement</li>
+                    <li>Background music mixing</li>
+                    <li>Sound effects design</li>
+                    <li>Audio ducking & leveling</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <header class="section-header">
+            <div class="section-label">My Work</div>
+            <h2 class="section-title">Portfolio</h2>
+            <p class="section-subtitle">Explore my recent video editing projects showcasing creativity, technical excellence, and storytelling mastery across various genres and styles.</p>
+        </header>
+        <div class="portfolio-container">
+            <div class="portfolio-image-section">
+                <div class="portfolio-image-container">
+                    <img src="Me.png" alt="Kaweeja Matheesh - Professional Video Editor" class="portfolio-image" loading="lazy">
+                </div>
+            </div>
+            <div class="portfolio-grid">
+                <article class="portfolio-item">
+                    <div class="portfolio-icon" aria-hidden="true">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                   <h3>Project 1</h3>
+                    
+                    <a href="https://drive.google.com/file/d/1FlxdY762DcPF2LcQh1CxOTn06NJzknEL/view?usp=drive_link" target="_blank" class="portfolio-link">
+                        Watch Video <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+                <article class="portfolio-item">
+                    <div class="portfolio-icon" aria-hidden="true">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Project 2</h3>
+                    
+                    <a href="https://drive.google.com/file/d/1dQBfAAv7P47HbmLfKeKuG11y-ENwEV1V/view?usp=drive_link" target="_blank" class="portfolio-link">
+                        Watch Video <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+                <article class="portfolio-item">
+                    <div class="portfolio-icon" aria-hidden="true">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>Project 3</h3>
+                    <a href="https://youtu.be/E30NyI10xio?si=DTd48TeGchX6DC_B" target="_blank" class="portfolio-link">
+                        Watch Video <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+                <article class="portfolio-item">
+                    <div class="portfolio-icon" aria-hidden="true">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Project 4</h3>
+                    <a href="https://drive.google.com/file/d/1BhjXH-MwnmBgAh9XvCrBTqIuyNZznzLn/view?usp=drive_link" target="_blank" class="portfolio-link">
+                        Watch Video <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h4>3+</h4>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h4>150+</h4>
+                <p>Projects Completed</p>
+            </div>
+            <div class="stat-item">
+                <h4>75+</h4>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat-item">
+                <h4>24/7</h4>
+                <p>Available</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Let's Create Together</h2>
+                <p>Have a video project in mind? Whether it's YouTube content, a commercial campaign, wedding film, or creative project, I'd love to collaborate and bring your vision to life with professional editing excellence.</p>
+                <div class="contact-details">
+                    <div class="contact-detail-item">
+                        <h4>Email</h4>
+                        <p>mproductionsofficial089@gmail.com</p>
+                    </div>
+                    <div class="contact-detail-item">
+                        <h4>Location</h4>
+                        <p>Sri Lanka • Available Worldwide</p>
+                    </div>
+                    <div class="contact-detail-item">
+                        <h4>Response Time</h4>
+                        <p>Within 12-24 hours</p>
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+                <div class="footer-socials">
+                <a href="https://www.youtube.com/channel/UCuj-zW7iroia6oH_fRSbo5A/" class="social-link" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://www.instagram.com/mproductionsofficial/" class="social-link" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/94764101397" class="social-link" aria-label="Whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>Kaweeja Matheesh</h3>
+            <p>Professional Video Editor | Premiere Pro & After Effects Specialist</p>
+            <p>Transforming visions into visual masterpieces, one frame at a time.</p>
+
+            <p style="margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 14px;">© 2025 Kaweeja Matheesh. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 80);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.skill-item, .stat-item, .portfolio-item, .highlight-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    const menuToggle = document.querySelector('.menu-toggle');
+                    const navCenter = document.querySelector('.nav-center');
+                    if (menuToggle && menuToggle.classList.contains('active')) {
+                        menuToggle.classList.remove('active');
+                        navCenter.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navCenter = document.querySelector('.nav-center');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navCenter.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
